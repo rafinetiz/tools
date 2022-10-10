@@ -1,5 +1,6 @@
 const axios = require('axios').default;
 const fs = require('fs');
+const { print } = require('./func');
 
 (async () => {
     
@@ -22,7 +23,7 @@ const fs = require('fs');
             const regex = /(js\/native.js\?1\.1|Getxmllogin\(\))/;
 
             if (regex.test(body.data)) {
-                console.log(`\x1b[K\x1b[32m ${ip} SPC FOUND\x1b[0m`)
+                print(`\x1b[K\x1b[32m ${ip} SPC FOUND\x1b[0m`)
             }
         } catch (err) {
             // console.log(`  error: ${err.message}`)

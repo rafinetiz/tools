@@ -1,15 +1,12 @@
 const { spawn } = require('child_process');
 const fs = require('fs');
 const axios = require('axios').default;
+const { print } = require('./func');
 
 const http = axios.create({
     timeout: 5000,
     insecureHTTPParser: true
 });
-
-function print(message, newline=true) {
-    process.stdout.write(message + newline ? '\n' : '');
-}
 
 async function ping(host) {
     return new Promise((resolve, reject) => {
@@ -66,7 +63,7 @@ async function scan(ip) {
 
                 success++;
             } catch (error) {
-                console.log(`  ${ip} - ${error.message}`);
+                print(`  ${ip} - ${error.message}`);
                 fail++;
             }
         });
@@ -97,15 +94,15 @@ function range(start, end) {
     for (const i of n) {
         const ip = `10.${i}.0`;
 
-        process.stdout.write(`Pinging ${ip}\t`);
+        print(`Pinging ${ip}\t`, false);
         try {
             await ping(ip + '.1');
-            console.log('Scanning');
+            print('Scanning');
 
             const [code, success, fail] = await scan(ip + '.0');
-            console.log(`  ${success} success, ${fail} fail`);
+            print(`  ${success} success, ${fail} fail`);
         } catch (error) {
-            console.log(error)
+            print(error)
             continue;
         }
     }
