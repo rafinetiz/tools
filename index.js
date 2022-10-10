@@ -91,6 +91,10 @@ function range(start, end) {
 (async () => {
     const n = range(9, 254);
 
+    if (fs.existsSync('result') == false) {
+        fs.mkdirSync('result');
+    }
+
     for (const i of n) {
         const ip = `10.${i}.0`;
 

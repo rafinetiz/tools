@@ -10,7 +10,7 @@ const { print } = require('./func');
     for (let i = 0; i < a.length; i++) {
         const ip = a[i].split(' - ')[0];
 
-        if (!ip) return;
+        if (!ip) continue;
 
         try {
             process.stdout.write(`\x1b[Kprocessing ${ip} (${i} of ${a.length})\r`);
