@@ -19,7 +19,7 @@ const fs = require('fs');
                 insecureHTTPParser: true
             });
             
-            const regex = /(js\/native.js\?1\.1)/;
+            const regex = /(js\/native.js\?1\.1|Getxmllogin\(\))/;
 
             if (regex.test(body.data)) {
                 console.log(`\x1b[K\x1b[32m ${ip} SPC FOUND\x1b[0m`)
